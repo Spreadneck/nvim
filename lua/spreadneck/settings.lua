@@ -24,5 +24,4 @@ o.splitright = true
 o.splitbelow = true
 o.termguicolors = true
 
-o.textwidth=80
-
+o.textwidth = 80

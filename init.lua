@@ -9,9 +9,6 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
-require("spreadneck.settings")
-require("spreadneck.maps")
-require("spreadneck.lazy")
-
-
+require "spreadneck.settings"
+require "spreadneck.maps"
+require "spreadneck.lazy"

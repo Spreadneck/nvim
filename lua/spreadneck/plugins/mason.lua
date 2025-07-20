@@ -25,22 +25,39 @@ return {
       },
     },
     config = function(_, opts)
-      require("mason-lspconfig").setup(opts)
-      -- Prefer using the handler to register all LSPs
-      require("mason-lspconfig").setup_handlers {
-        function(server)
-          require("lspconfig")[server].setup {}
-        end,
-        -- Optional: per-server config overrides
-        ["lua_ls"] = function()
-          require("lspconfig").lua_ls.setup {
-            settings = {
-              Lua = { diagnostics = { globals = { "vim" } } },
-            },
-          }
-        end,
-        -- Add more specific server setups as needed
-      }
+      local mason_lspconfig = require "mason-lspconfig"
+      mason_lspconfig.setup(opts)
+
+      local lspconfig = require "lspconfig"
+
+      if mason_lspconfig.setup_handlers then
+        -- Newer versions expose setup_handlers
+        mason_lspconfig.setup_handlers {
+          function(server)
+            lspconfig[server].setup {}
+          end,
+          ["lua_ls"] = function()
+            lspconfig.lua_ls.setup {
+              settings = {
+                Lua = { diagnostics = { globals = { "vim" } } },
+              },
+            }
+          end,
+        }
+      else
+        -- Fallback for older versions
+        for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+          if server == "lua_ls" then
+            lspconfig.lua_ls.setup {
+              settings = {
+                Lua = { diagnostics = { globals = { "vim" } } },
+              },
+            }
+          else
+            lspconfig[server].setup {}
+          end
+        end
+      end
     end,
   },
   -- ... previous mason/mason-lspconfig sections as above ...

@@ -1,6 +1,13 @@
 return {{
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate"
+    branch = 'master', 
+    lazy = false, 
+    build = ":TSUpdate",
+    opts = {
+    ensure_installed = { "markdown", "markdown_inline", "html", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "python", "bash", "json" }, 
+    highlight = { enable = true }, 
+    indent = { enable = true },
+  },
 }, {
     -- Register Treesitter language for Vimwiki after plugins are loaded
     "nvim-treesitter/nvim-treesitter",

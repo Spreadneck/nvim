@@ -32,7 +32,21 @@ return {{
                 lualine_x = {'encoding', 'fileformat', 'filetype'},
                 lualine_y = {'progress'},
                 lualine_z = {'location'}
+            },
+            extensions = {
+              "lazy",
+              "fzf",
+              "mason",
+              'nvim-tree',
+              'fugitive'
             }
         })
     end
-}, {"nvim-lua/plenary.nvim"}}
+}, {
+  "nvim-lua/plenary.nvim"
+},{
+ 'nvim-telescope/telescope.nvim', tag = '0.1.8',
+-- or                              , branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    } 
+}

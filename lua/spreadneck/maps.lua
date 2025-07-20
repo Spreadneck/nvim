@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
 
 local function map(mode, lhs, rhs, opts)
-	opts = opts or {}
-	opts.silent = true
-	vim.keymap.set(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = true
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- Save

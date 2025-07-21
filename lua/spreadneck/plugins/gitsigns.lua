@@ -8,46 +8,46 @@ return {
         signs = {
           add = {
             hl = "GitSignsAdd",
-            text = "",   -- Nerd Font: nf-fa-plus (plus)
+            text = "", -- Nerd Font: nf-fa-plus (plus)
             numhl = "GitSignsAddNr",
             linehl = "GitSignsAddLn",
           },
           change = {
             hl = "GitSignsChange",
-            text = "",  -- nf-oct-diff_modified
+            text = "", -- nf-oct-diff_modified
             numhl = "GitSignsChangeNr",
             linehl = "GitSignsChangeLn",
           },
           delete = {
             hl = "GitSignsDelete",
-            text = "",   -- nf-oct-diff_removed (trash can)
+            text = "", -- nf-oct-diff_removed (trash can)
             numhl = "GitSignsDeleteNr",
             linehl = "GitSignsDeleteLn",
           },
           topdelete = {
             hl = "GitSignsDelete",
-            text = "",   -- nf-fa-minus (minus)
+            text = "", -- nf-fa-minus (minus)
             numhl = "GitSignsDeleteNr",
             linehl = "GitSignsDeleteLn",
           },
           changedelete = {
             hl = "GitSignsChange",
-            text = "󰍹",  -- nf-md-pencil (pencil)
+            text = "󰍹", -- nf-md-pencil (pencil)
             numhl = "GitSignsChangeNr",
             linehl = "GitSignsChangeLn",
           },
           untracked = {
             hl = "GitSignsAdd",
-            text = "",   -- nf-fa-question (question mark for untracked)
+            text = "", -- nf-fa-question (question mark for untracked)
             numhl = "GitSignsAddNr",
             linehl = "GitSignsAddLn",
           },
         },
 
-        signcolumn = true,  -- Toggle with ':Gitsigns toggle_signs'
-        numhl      = false, -- Toggle with ':Gitsigns toggle_numhl'
-        linehl     = false, -- Toggle with ':Gitsigns toggle_linehl'
-        word_diff  = false, -- Toggle with ':Gitsigns toggle_word_diff'
+        signcolumn = true, -- Toggle with ':Gitsigns toggle_signs'
+        numhl = false, -- Toggle with ':Gitsigns toggle_numhl'
+        linehl = false, -- Toggle with ':Gitsigns toggle_linehl'
+        word_diff = false, -- Toggle with ':Gitsigns toggle_word_diff'
         watch_gitdir = { interval = 1000, follow_files = true },
         attach_to_untracked = true,
 
@@ -65,11 +65,10 @@ return {
           style = "minimal",
           relative = "cursor",
           row = 0,
-          col = 1
+          col = 1,
         },
-
-        yadm = { enable = false },
       }
     end,
   },
 }
+

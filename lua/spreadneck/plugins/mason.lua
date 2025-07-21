@@ -95,7 +95,6 @@ return {
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.diagnostics.ansiblelint,
           null_ls.builtins.diagnostics.eslint,
-          null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.diagnostics.codespell.with {
             filetypes = { "markdown", "vimwiki" },
           },

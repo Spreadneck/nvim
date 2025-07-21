@@ -11,6 +11,7 @@ Personal Neovim setup optimized for Markdown, Vimwiki, and developer productivit
 - **LSP**: managed by Mason (supports auto-install, null-ls, LSP servers)
 - **Autocompletion**: powered by nvim-cmp
 - **Formatting & Linting**: via null-ls and mason-null-ls
+- **Ansible syntax** with ansible-vim plus LSP and linting
 - **Git Integration**: Gitsigns, vim-fugitive, Telescope git pickers
 - **Markdown preview in terminal**
 - **Automatic spell checking** for Markdown/Vimwiki (`en_us` by default)

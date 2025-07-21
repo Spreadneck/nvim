@@ -6,8 +6,20 @@ return {
     build = ":TSUpdate",
     opts = {
       ensure_installed = {
-        "markdown", "markdown_inline", "html", "lua", "vim", "vimdoc", "query",
-        "javascript", "typescript", "python", "bash", "json", "latex"
+        "markdown",
+        "markdown_inline",
+        "html",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "javascript",
+        "typescript",
+        "python",
+        "bash",
+        "json",
+        "yaml",
+        "latex",
       },
       highlight = { enable = true },
       indent = { enable = true },

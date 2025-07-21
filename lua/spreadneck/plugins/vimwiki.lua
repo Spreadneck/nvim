@@ -16,6 +16,7 @@ return {
           diary_index = "index",
           diary_rel_path = "journal",
           diary_header = "Journal",
+          diary_template = "diary",
         },
       }
       vim.g.vimwiki_markdown_link_ext = 1

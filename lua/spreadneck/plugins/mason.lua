@@ -7,81 +7,49 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
     opts = {
-      -- Explicit list of servers. Add more as needed.
       ensure_installed = {
-        "bashls",
-        "cssls",
-        "dockerls",
-        "gopls",
-        "html",
-        "jsonls",
-        "pyright",
-        "vimls",
-        "yamlls",
-        "ansiblels",
-        "marksman",
-        "lua_ls",
-        "texlab",
+        "bashls", "cssls", "dockerls", "gopls", "html", "jsonls", "pyright",
+        "vimls", "yamlls", "ansiblels", "marksman", "lua_ls", "texlab",
       },
     },
     config = function(_, opts)
-      local mason_lspconfig = require "mason-lspconfig"
-      mason_lspconfig.setup(opts)
-
-      local lspconfig = require "lspconfig"
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      if mason_lspconfig.setup_handlers then
-        -- Newer versions expose setup_handlers
-        mason_lspconfig.setup_handlers {
-          function(server)
-            lspconfig[server].setup { capabilities = capabilities }
-          end,
-          ["lua_ls"] = function()
-            lspconfig.lua_ls.setup {
-              capabilities = capabilities,
-              settings = {
-                Lua = { diagnostics = { globals = { "vim" } } },
-              },
-            }
-          end,
-        }
-      else
-        -- Fallback for older versions
-        for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-          if server == "lua_ls" then
-            lspconfig.lua_ls.setup {
-              capabilities = capabilities,
-              settings = {
-                Lua = { diagnostics = { globals = { "vim" } } },
-              },
-            }
-          else
-            lspconfig[server].setup { capabilities = capabilities }
+      local setup_lsp_servers = function(opts)
+        local mason_lspconfig = require "mason-lspconfig"
+        local lspconfig = require "lspconfig"
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        mason_lspconfig.setup(opts)
+        if mason_lspconfig.setup_handlers then
+          mason_lspconfig.setup_handlers {
+            function(server)
+              local server_opts = { capabilities = capabilities }
+              if server == "lua_ls" then
+                server_opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
+              end
+              lspconfig[server].setup(server_opts)
+            end,
+          }
+        else
+          for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+            local server_opts = { capabilities = capabilities }
+            if server == "lua_ls" then
+              server_opts.settings = { Lua = { diagnostics = { globals = { "vim" } } } }
+            end
+            lspconfig[server].setup(server_opts)
           end
         end
       end
+
+      setup_lsp_servers(opts)
     end,
   },
-  -- ... previous mason/mason-lspconfig sections as above ...
-
   {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvimtools/none-ls.nvim" },
     opts = {
       ensure_installed = {
-        "prettier",
-        "stylua",
-        "eslint",
-        "shellcheck",
-        "shfmt",
-        "black",
-        "ruff",
-        "isort",
-        "markdownlint",
-        "yamllint",
-        "ansiblelint",
+        "prettier", "stylua", "eslint", "shellcheck", "shfmt", "black",
+        "ruff", "isort", "markdownlint", "yamllint", "ansiblelint",
       },
     },
     config = function(_, opts)
@@ -90,10 +58,7 @@ return {
 
       null_ls.setup {
         sources = {
-          -- CODE ACTIONS
           null_ls.builtins.code_actions.gitsigns,
-
-          -- DIAGNOSTICS/LINTING
           null_ls.builtins.diagnostics.markdownlint,
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.diagnostics.ansiblelint,
@@ -101,20 +66,15 @@ return {
           null_ls.builtins.diagnostics.codespell.with {
             filetypes = { "markdown", "vimwiki" },
           },
-
-          -- FORMATTING
           null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.isort,
-
-          -- SPELL COMPLETION
           null_ls.builtins.completion.spell.with {
             filetypes = { "markdown", "vimwiki" },
           },
         },
-
         on_attach = function(client, bufnr)
           if client.supports_method "textDocument/formatting" then
             vim.api.nvim_clear_autocmds { group = "LspFormatting", buffer = bufnr }

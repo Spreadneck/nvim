@@ -6,36 +6,20 @@ return {
     build = ":TSUpdate",
     opts = {
       ensure_installed = {
-        "markdown",
-        "markdown_inline",
-        "html",
-        "lua",
-        "vim",
-        "vimdoc",
-        "query",
-        "javascript",
-        "typescript",
-        "python",
-        "bash",
-        "json",
+        "markdown", "markdown_inline", "html", "lua", "vim", "vimdoc", "query",
+        "javascript", "typescript", "python", "bash", "json", "latex"
       },
       highlight = { enable = true },
       indent = { enable = true },
+      incremental_selection = { enable = true },
     },
-  },
-  {
-    -- Register Treesitter language for Vimwiki after plugins are loaded
-    "nvim-treesitter/nvim-treesitter",
-    config = function()
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
       vim.treesitter.language.register("markdown", "vimwiki")
     end,
-  },
-  {
-    "tree-sitter-grammars/tree-sitter-markdown",
-    run = ":TSInstall markdown",
-  },
-  {
-    "latex-lsp/tree-sitter-latex",
-    run = ":TSInstall latex",
+    dependencies = {
+      { "tree-sitter-grammars/tree-sitter-markdown" },
+      { "latex-lsp/tree-sitter-latex" },
+    },
   },
 }

@@ -2,27 +2,25 @@ return {
   {
   "gbprod/yanky.nvim",
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
+      -- Use yanky settings here if desired
   },
-  dependencies = { "folke/snacks.nvim" },
+    dependencies = { "nvim-telescope/telescope.nvim" },
   keys = {
     {
       "<leader>p",
       function()
-          Snacks.picker.yanky()
+          require("telescope").extensions.yank_history.yank_history()
       end,
       mode = { "n", "x" },
-      desc = "Open Yank History",
+        desc = "Open Yank History (Telescope)",
     },
-    { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank text" },
-    { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
-    { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
-    { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after selection" },
-    { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before selection" },
+      { "y", "<Plug>(YankyYank)",           mode = { "n", "x" }, desc = "Yank text" },
+      { "p", "<Plug>(YankyPutAfter)",       mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+      { "P", "<Plug>(YankyPutBefore)",      mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+      { "gp", "<Plug>(YankyGPutAfter)",     mode = { "n", "x" }, desc = "Put yanked text after selection" },
+      { "gP", "<Plug>(YankyGPutBefore)",    mode = { "n", "x" }, desc = "Put yanked text before selection" },
     { "<c-p>", "<Plug>(YankyPreviousEntry)", desc = "Select previous entry through yank history" },
-    { "<c-n>", "<Plug>(YankyNextEntry)", desc = "Select next entry through yank history" },
+      { "<c-n>", "<Plug>(YankyNextEntry)",     desc = "Select next entry through yank history" },
     { "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put indented after cursor (linewise)" },
     { "[p", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Put indented before cursor (linewise)" },
     { "]P", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put indented after cursor (linewise)" },
@@ -34,6 +32,11 @@ return {
     { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
     { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
   },
-}
-}
+    config = function()
+      require("yanky").setup({})
 
+      -- Ensure Telescope extension is loaded
+      require("telescope").load_extension("yank_history")
+    end,
+}
+}

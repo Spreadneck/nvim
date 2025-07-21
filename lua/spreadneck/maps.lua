@@ -19,11 +19,5 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>e", "<CMD>NvimTreeToggle<CR>")
 map("n", "<leader>r", "<CMD>NvimTreeFocus<CR>")
 
--- Yanky 
--- vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
--- vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
--- vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
--- vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
-
--- vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
--- vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+-- Spelling
+vim.keymap.set("n", "<leader>ss", "z=", { desc = "Spelling suggestions" })

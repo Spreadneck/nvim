@@ -7,7 +7,7 @@ Personal Neovim setup optimized for Markdown, Vimwiki, and developer productivit
 ## Features
 
 - **[lazy.nvim](https://github.com/folke/lazy.nvim)** plugin manager
-- **Treesitter**: modern syntax for Markdown, Vimwiki, code
+- **Treesitter**: modern syntax for Markdown, Vimwiki, HTML, LaTeX, and code
 - **LSP**: managed by Mason (supports auto-install for LSP servers)
 - **Autocompletion**: powered by nvim-cmp
 - **Ansible syntax** with ansible-vim plus LSP and linting
@@ -16,6 +16,7 @@ Personal Neovim setup optimized for Markdown, Vimwiki, and developer productivit
 - **Markdown preview in terminal**
 - **Automatic spell checking** for Markdown/Vimwiki (`en_us` by default)
 - **Yank history** and motion via yanky.nvim (with Telescope picker interface)
+- **Text surrounds** handled by nvim-surround
 - **Enhanced notifications and command-line UI** via noice.nvim
 - **Telescope fuzzy finder** with these extensions enabled:
   - FZF Native (fast sort/picker engine)

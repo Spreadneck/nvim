@@ -10,6 +10,7 @@ This repository contains a personal Neovim setup focused on writing Markdown and
 - Formatting and linting through null-ls
 - Render Markdown preview in the terminal
 - Automatic spell checking for Markdown and Vimwiki files (`en_us` by default)
+  (run `:set spelllang=en_us` once if you see `E756`)
 
 ## Installation
 Clone the repo into your Neovim config directory:

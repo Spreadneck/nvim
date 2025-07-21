@@ -6,6 +6,9 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
     vim.treesitter.start(args.buf)
     vim.api.nvim_buf_set_option(args.buf, "spell", true)
-    vim.api.nvim_buf_set_option(args.buf, "spelllang", "en_us")
+    local ok = pcall(vim.api.nvim_buf_set_option, args.buf, "spelllang", "en_us")
+    if not ok then
+      vim.notify("Spell dictionary for en_us is missing. Run ':set spelllang=en_us' to download.", vim.log.levels.WARN)
+    end
   end,
 })

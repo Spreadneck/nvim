@@ -8,8 +8,19 @@ return {
     dependencies = { "neovim/nvim-lspconfig" },
     opts = {
       ensure_installed = {
-        "bashls", "cssls", "dockerls", "gopls", "html", "jsonls", "pyright",
-        "vimls", "yamlls", "ansiblels", "marksman", "lua_ls", "texlab",
+        "bashls",
+        "cssls",
+        "dockerls",
+        "gopls",
+        "html",
+        "jsonls",
+        "pyright",
+        "vimls",
+        "yamlls",
+        "ansiblels",
+        "marksman",
+        "lua_ls",
+        "texlab",
       },
     },
     config = function(_, opts)
@@ -43,51 +54,31 @@ return {
     end,
   },
   {
-    "jay-babu/mason-null-ls.nvim",
+    "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvimtools/none-ls.nvim" },
     opts = {
-      ensure_installed = {
-        "prettier", "stylua", "eslint", "shellcheck", "shfmt", "black",
-        "ruff", "isort", "markdownlint", "yamllint", "ansiblelint",
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        html = { "prettier" },
+        css = { "prettier" },
+        sh = { "shfmt" },
+        ["_"] = { "trim_whitespace" },
+      },
+      format_on_save = {
+        timeout_ms = 2000,
+        lsp_format = "fallback",
       },
     },
     config = function(_, opts)
-      require("mason-null-ls").setup(opts)
-      local null_ls = require "null-ls"
-
-      null_ls.setup {
-        sources = {
-          null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.diagnostics.markdownlint,
-          null_ls.builtins.diagnostics.yamllint,
-          null_ls.builtins.diagnostics.ansiblelint,
-          null_ls.builtins.diagnostics.eslint,
-          null_ls.builtins.diagnostics.codespell.with {
-            filetypes = { "markdown", "vimwiki" },
-          },
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.shfmt,
-          null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.isort,
-          null_ls.builtins.completion.spell.with {
-            filetypes = { "markdown", "vimwiki" },
-          },
-        },
-        on_attach = function(client, bufnr)
-          if client.supports_method "textDocument/formatting" then
-            vim.api.nvim_clear_autocmds { group = "LspFormatting", buffer = bufnr }
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 2000 }
-              end,
-            })
-          end
-        end,
-      }
+      require("conform").setup(opts)
     end,
+  },
+  {
+    "zapling/mason-conform.nvim",
+    dependencies = { "stevearc/conform.nvim" },
+    config = true,
   },
 }

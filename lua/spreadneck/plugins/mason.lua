@@ -29,15 +29,17 @@ return {
       mason_lspconfig.setup(opts)
 
       local lspconfig = require "lspconfig"
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       if mason_lspconfig.setup_handlers then
         -- Newer versions expose setup_handlers
         mason_lspconfig.setup_handlers {
           function(server)
-            lspconfig[server].setup {}
+            lspconfig[server].setup { capabilities = capabilities }
           end,
           ["lua_ls"] = function()
             lspconfig.lua_ls.setup {
+              capabilities = capabilities,
               settings = {
                 Lua = { diagnostics = { globals = { "vim" } } },
               },
@@ -49,12 +51,13 @@ return {
         for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
           if server == "lua_ls" then
             lspconfig.lua_ls.setup {
+              capabilities = capabilities,
               settings = {
                 Lua = { diagnostics = { globals = { "vim" } } },
               },
             }
           else
-            lspconfig[server].setup {}
+            lspconfig[server].setup { capabilities = capabilities }
           end
         end
       end
@@ -95,7 +98,6 @@ return {
           null_ls.builtins.diagnostics.yamllint,
           null_ls.builtins.diagnostics.ansiblelint,
           null_ls.builtins.diagnostics.eslint,
-          null_ls.builtins.diagnostics.ruff,
           null_ls.builtins.diagnostics.codespell.with {
             filetypes = { "markdown", "vimwiki" },
           },

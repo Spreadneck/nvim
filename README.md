@@ -7,10 +7,10 @@ This repository contains a personal Neovim setup focused on writing Markdown and
 - Treesitter support for Markdown and Vimwiki
 - Git integration with gitsigns and vim-fugitive
 - LSP management via mason and mason-lspconfig
+- Auto completion powered by nvim-cmp
 - Formatting and linting through null-ls
 - Render Markdown preview in the terminal
 - Automatic spell checking for Markdown and Vimwiki files (`en_us` by default)
-  (run `:set spelllang=en_us` once if you see `E756`)
 
 ## Installation
 Clone the repo into your Neovim config directory:

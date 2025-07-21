@@ -16,6 +16,7 @@ Personal Neovim setup optimized for Markdown, Vimwiki, and developer productivit
 - **Markdown preview in terminal**
 - **Automatic spell checking** for Markdown/Vimwiki (`en_us` by default)
 - **Yank history** and motion via yanky.nvim (with Telescope picker interface)
+- **Enhanced notifications and command-line UI** via noice.nvim
 - **Telescope fuzzy finder** with these extensions enabled:
   - FZF Native (fast sort/picker engine)
   - Project management (`telescope-project`)

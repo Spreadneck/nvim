@@ -8,10 +8,10 @@ Personal Neovim setup optimized for Markdown, Vimwiki, and developer productivit
 
 - **[lazy.nvim](https://github.com/folke/lazy.nvim)** plugin manager
 - **Treesitter**: modern syntax for Markdown, Vimwiki, code
-- **LSP**: managed by Mason (supports auto-install, null-ls, LSP servers)
+- **LSP**: managed by Mason (supports auto-install for LSP servers)
 - **Autocompletion**: powered by nvim-cmp
-- **Formatting & Linting**: via null-ls and mason-null-ls
 - **Ansible syntax** with ansible-vim plus LSP and linting
+- **Formatting**: via conform.nvim and mason-conform.nvim
 - **Git Integration**: Gitsigns, vim-fugitive, Telescope git pickers
 - **Markdown preview in terminal**
 - **Automatic spell checking** for Markdown/Vimwiki (`en_us` by default)

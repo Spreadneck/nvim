@@ -11,4 +11,5 @@ vim.g.maplocalleader = " "
 
 require "spreadneck.settings"
 require "spreadneck.maps"
+require "spreadneck.autocmds"
 require "spreadneck.lazy"

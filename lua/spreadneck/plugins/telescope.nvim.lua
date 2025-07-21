@@ -8,15 +8,13 @@ return {
         build = "make",
         cond = vim.fn.executable("make") == 1,
       },
-      {
-        "olacin/telescope-cc.nvim",
+      { "olacin/telescope-cc.nvim" },
+      { "nvim-telescope/telescope-project.nvim",
+        opts = {
+          hide_workspace = true,
+        },
       },
-      {
-        "nvim-telescope/telescope-project.nvim",
-      },
-      {
-        "nvim-telescope/telescope-file-browser.nvim".
-      },
+      { "nvim-telescope/telescope-file-browser.nvim" },
     },
     cmd = "Telescope",
     config = function()
@@ -27,6 +25,7 @@ return {
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "cc")
       pcall(require("telescope").load_extension, "project")
+      pcall(require("telescope").load_extension, "file_browser")
     end,
-  }
+  },
 }

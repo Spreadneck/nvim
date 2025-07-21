@@ -1,34 +1,93 @@
 # Neovim Configuration
 
-This repository contains a personal Neovim setup focused on writing Markdown and Vimwiki files.
+Personal Neovim setup optimized for Markdown, Vimwiki, and developer productivity—modular, fast, and extensible.
+
+---
 
 ## Features
-- **Lazy.nvim** plugin manager
-- Treesitter support for Markdown and Vimwiki
-- Git integration with gitsigns and vim-fugitive
-- LSP management via mason and mason-lspconfig
-- Auto completion powered by nvim-cmp
-- Formatting and linting through null-ls
-- Render Markdown preview in the terminal
-- Automatic spell checking for Markdown and Vimwiki files (`en_us` by default)
+
+- **[lazy.nvim](https://github.com/folke/lazy.nvim)** plugin manager
+- **Treesitter**: modern syntax for Markdown, Vimwiki, code
+- **LSP**: managed by Mason (supports auto-install, null-ls, LSP servers)
+- **Autocompletion**: powered by nvim-cmp
+- **Formatting & Linting**: via null-ls and mason-null-ls
+- **Git Integration**: Gitsigns, vim-fugitive, Telescope git pickers
+- **Markdown preview in terminal**
+- **Automatic spell checking** for Markdown/Vimwiki (`en_us` by default)
+- **Yank history** and motion via yanky.nvim (with Telescope picker interface)
+- **Telescope fuzzy finder** with these extensions enabled:
+  - FZF Native (fast sort/picker engine)
+  - Project management (`telescope-project`)
+  - Code actions/comments (`telescope-cc`)
+  - File browser (`telescope-file-browser`)
+  - Yank history (`yanky`)
+  - Symbol picker, spell suggester (`spell_suggest`), and more
+
+---
 
 ## Installation
-Clone the repo into your Neovim config directory:
+
+Clone this repo into your Neovim config directory:
 
 ```sh
 git clone <repo-url> ~/.config/nvim
 ```
 
-Install the plugins on first start with:
+On first launch, lazy.nvim will bootstrap and sync plugins:
 
 ```vim
 :Lazy sync
 ```
 
-### Formatting
-This repo uses [stylua](https://github.com/JohnnyMorganz/StyLua) for Lua formatting. Run `stylua .` before committing changes:
+---
+
+## Usage Highlights
+
+- **Yank history picker:** `<leader>p` (uses Telescope)
+- **Spell suggestions picker:** `<leader>sp` (uses Telescope, in spell-checked files)
+- **Project picker:** `:Telescope project`
+- **File browser:** `:Telescope file_browser`
+- **Git status:** `:Telescope git_status`
+- **Jump to symbols:** `:Telescope treesitter` (buffer-local outline)
+- **Markdown/Vimwiki notes:** auto spell-check, grammar wordlist support via academic.nvim
+
+---
+
+## Formatting
+
+This repo uses [stylua](https://github.com/JohnnyMorganz/StyLua) for Lua formatting.  
+Before committing changes, run:
 
 ```sh
 stylua init.lua lua
 ```
+Or use it as a pre-commit hook.
 
+---
+
+## Plugin Management
+
+- Lazy.nvim loads plugins defined in `lua/spreadneck/plugins/`.
+- Update plugins anytime with `:Lazy sync`.
+
+---
+
+## Advanced
+
+- **Spell wordlist management:** Powered by [academic.nvim](https://github.com/ficcdaf/academic.nvim)
+- **Custom Vimwiki/Markdown templates:** See `vimwiki` folder and docs.
+
+---
+
+## Updating
+
+Pull updates and re-sync plugins:
+
+```sh
+git pull
+nvim +"Lazy sync" +qall
+```
+
+---
+
+*For detailed config, see the `lua/spreadneck/` folder and plugin comments.*

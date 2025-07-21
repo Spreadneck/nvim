@@ -5,5 +5,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "vimwiki" },
   callback = function(args)
     vim.treesitter.start(args.buf)
+    vim.api.nvim_buf_set_option(args.buf, "spell", true)
+    vim.api.nvim_buf_set_option(args.buf, "spelllang", "en_us")
   end,
 })

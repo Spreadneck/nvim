@@ -9,6 +9,7 @@ This repository contains a personal Neovim setup focused on writing Markdown and
 - LSP management via mason and mason-lspconfig
 - Formatting and linting through null-ls
 - Render Markdown preview in the terminal
+- Automatic spell checking for Markdown and Vimwiki files (`en_us` by default)
 
 ## Installation
 Clone the repo into your Neovim config directory:

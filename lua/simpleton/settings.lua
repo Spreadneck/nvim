@@ -15,7 +15,7 @@ o.ruler = true
 o.mouse = "a"
 o.title = true
 o.hidden = true
-o.ttimeoutlen = 0
+o.ttimeoutlen = 50
 o.wildmenu = true
 o.showcmd = true
 o.showmatch = true
@@ -24,4 +24,4 @@ o.splitright = true
 o.splitbelow = true
 o.termguicolors = true
 
-o.textwidth=80
+o.textwidth = 80

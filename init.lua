@@ -9,9 +9,7 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
-require("spreadneck.settings")
-require("spreadneck.maps")
-require("spreadneck.lazy")
-
-
+require "simpleton.settings"
+require "core.lazy"
+require "core.lsp"
+require "simpleton.autocmds"

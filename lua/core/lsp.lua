@@ -1,4 +1,4 @@
-vim.lsp.enable({"marksman", "lua_ls"})
+vim.lsp.enable({"marksman", "lua_ls", "pyright", "yamlls"})
 
 vim.diagnostic.config({
     virtual_lines = true,
